@@ -1,5 +1,3 @@
-<?php
-
 $superheroes = [
   [
       "id" => 1,
@@ -63,10 +61,28 @@ $superheroes = [
   ], 
 ];
 
+
+
+$searchQuery = isset($_GET['query']) ? $_GET['query'] : '';
+$searchQuery = strtolower($searchQuery); 
+
+
+$filteredSuperheroes = array_filter($superheroes, function ($superhero) use ($searchQuery) {
+    $name = strtolower($superhero['name']);
+    $alias = strtolower($superhero['alias']);
+    return strpos($name, $searchQuery) !== false || strpos($alias, $searchQuery) !== false;
+});
+
+
+header('Content-Type: application/json');
+echo json_encode(array_values($filteredSuperheroes));
+exit;
+
+
 ?>
 
 <ul>
-<?php foreach ($superheroes as $superhero): ?>
-  <li><?= $superhero['alias']; ?></li>
-<?php endforeach; ?>
+    <?php foreach ($superheroes as $superhero): ?>
+    <li><?= $superhero['alias']; ?></li>
+    <?php endforeach; ?>
 </ul>
