@@ -4,10 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Superheroes</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h1>Avengers Character Search</h1>
-    <button id="searchButton">Search</button>
+    <div class="header"><h1>Avengers Character Search</h1></div>
+
+    <div class="container">
+      <p>Search by Full Name or Alias</p>
+      <div>
+        <input type="text" placeholder="Captain America or Steve Rogers" />
+        <button id="searchButton">Search</button>
+      </div>
+      <!-- Results -->
+
+      <div id="result"></div>
+    </div>
+
     <script src="app.js"></script>
   </body>
 </html>
